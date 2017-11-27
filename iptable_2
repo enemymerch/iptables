@@ -1,0 +1,32 @@
+iptables -F
+
+ipset -N LAN1 iphash
+ipset -A 192.168.14.0
+ipset -A 192.168.14.1
+ipset -A 192.168.14.2
+ipset -A 192.168.14.3
+ipset -A 192.168.14.4
+ipset -A 192.168.14.5
+ipset -A 192.168.14.6
+ipset -A 192.168.14.7
+ipset -A 192.168.14.8
+ipset -A 192.168.14.9
+ipset -A 192.168.14.10
+ipset -A 192.168.14.11
+ipset -A 192.168.14.12
+ipset -A 192.168.14.13
+ipset -A 192.168.14.14
+ipset -A 192.168.14.15
+ipset -A 192.168.14.16
+ipset -A 192.168.14.17
+ipset -A 192.168.14.18
+ipset -A 192.168.14.19
+ipset -A 192.168.14.20
+ipset -A 192.168.14.21
+ipset -A 192.168.14.22
+ipset -A 192.168.14.23
+ipset -A 192.168.14.24
+
+iptables -A OUTPUT -m set --set LAN1 dst -s 192.168.14.254 ACCEPT // SOURCE: eth3 ,DEST: LAN1, allows eth3 to send packets to LAN1
+
+iptables -A INPUT -m set --set LAN1 dst -s 192.168.14.254 ACCEPT // SOURCE: eth3 ,DEST: LAN1, allows LAN1 to accept packets from eth3 

@@ -1,0 +1,23 @@
+iptables -F
+
+//  remote PC can only access Web Server and Email Server.
+
+
+// remotePC CONF.
+iptables -A OUTPUT -s 93.101.30.55 -d 192.168.1.3 -j ACCEPT // allow remotePC to send packets to email server
+iptables -A OUTPUT -s 93.101.30.55 -d 192.168.1.2 -j ACCEPT // allow remotePC to send packets to web server
+
+iptables -A INPUT -s 192.168.1.3 -d 93.101.30.55 -j ACCCEPT // allow remotePC to accept packets from email server
+iptables -A INPUT -s 192.168.1.2 -d 93.101.30.55 -j ACCCEPT // allow remotePC to accept packets from web server
+
+
+//email server CONF.
+
+iptables -A INPUT -s 93.101.30.55 -d 192.168.1.3 -j ACCEPT // allow email server to accept packets from remotePC
+iptables -A OUTPUT -s 192.168.1.3 -s 93.101.30.55 -j ACCEPT // allow email server to send packets to remotePC
+
+//web server CONF.
+
+iptables -A INPUT -s 93.101.30.55 -d 192.168.1.2 -j ACCEPT // allow web server to accept packets from remotePC
+iptables -A OUTPUT -s 192.168.1.2 -s 93.101.30.55 -j ACCEPT // allow web server to send packets to remotePC
+
