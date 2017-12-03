@@ -28,7 +28,7 @@ ipset -A 192.168.14.23
 ipset -A 192.168.14.24
 
 iptables -A OUTPUT -m set --set LAN1 dst -s 192.168.14.254 ACCEPT 
-# SOURCE: eth3 ,DEST: LAN1, allows eth3 to send packets to LAN1
+
 
 iptables -A INPUT -m set --set LAN1 dst -s 192.168.14.254 ACCEPT 
-# SOURCE: eth3 ,DEST: LAN1, allows LAN1 to accept packets from eth3 
+
