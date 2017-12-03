@@ -1,26 +1,26 @@
 iptables -F
 
-// LAN1 CONF
+
 iptables -A OUTPUT -s 192.168.14.0/24 -d 173.194.39.210 -j ACCEPT 
-# allow lan1 to send packets to google
+
 iptables -A INPUT -s 173.194.39.210 -d 192.168.14.0/24 -j ACCEPT 
-# allow lan1 to accept packets from google
 
-// LAN2 CONF
+
+
 iptables -A OUTPUT -s 192.168.6.0/24 -d 173.194.39.210 -j ACCEPT 
-# allow lan2 to send packets to google
+
 iptables -A INPUT -s 173.194.39.210 -d 192.168.6.0/24 -j ACCEPT 
-# allow lan2 to accept packets from google
 
 
-// GOOGLE CONF
+
+
 iptables -A OUTPUT -s 173.194.39.210 -d 192.168.14.0/24 -j ACCEPT 
-# allow google to send packets to LAN1
+
 iptables -A OUTPUT -s 173.194.39.210 -d 192.168.6.0/24 -j ACCEPT 
-# allow google to send packets to LAN2
+
 
 iptables -A INPUT -s 192.168.14.0/24 -j ACCPET 
-# allow google to accept packets from LAN1
+
 iptables -A INPUT -s 192.168.6.0/24 -j ACCPET 
-# allow google to accept packets from LAN2
+
 
