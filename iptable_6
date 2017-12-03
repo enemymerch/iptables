@@ -1,5 +1,4 @@
 iptables -F
 
-# Allow incoming ssh only from IP 202.54.1.20
-iptables -A INPUT -p tcp -s 202.54.1.20 -d $SERVER_IP --sport ssh --dport 40000 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp -s $SERVER_IP --sport 40000 --dport ssh -m state --state ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -d 193.140.236.80 --sport ssh --dport 40000 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -s 193.140.236.80 --sport 40000 --dport ssh -m state --state ESTABLISHED -j ACCEPT
